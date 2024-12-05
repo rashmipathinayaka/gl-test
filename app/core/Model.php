@@ -115,4 +115,11 @@ Trait Model{
         $this->query($query,$data);
         
     }   
+
+    public function findSpecificLand($id) {
+        $query = "SELECT * FROM lands WHERE landowner_id = :id";
+    
+        return $this->query($query, ['id' => $id]);
+    }
+
 }

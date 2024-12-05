@@ -10,10 +10,10 @@ class Buyer extends Controller
             session_start();
         }
         // Check if the user is logged in and is an admin
-        // if (!isset($_SESSION['id']) || $_SESSION['role_id'] != 5) { // Assuming 1 is the role ID for admin
-        //     header("Location: " . ROOT . "/unauthorized");
-        //     exit();
-        // }
+        if (!isset($_SESSION['id']) || $_SESSION['role_id'] != 5) { // Assuming 1 is the role ID for admin
+            header("Location: " . ROOT . "/unauthorized");
+            exit();
+        }
 
         $this->view('buyer');
     }

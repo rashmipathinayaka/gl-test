@@ -42,7 +42,7 @@
                 <li><a href="<?= ROOT ?>/marketplace">Marketplace</a></li>
             </ul>
             <ul class="logout">
-                <li><a href="/gl/logout.php">Log Out</a></li>
+                <li><a href="<?= ROOT ?>/login/logout">Log Out</a></li>
             </ul>
         </div>
 

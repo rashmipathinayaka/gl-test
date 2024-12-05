@@ -45,7 +45,7 @@
                 <li><a onclick="showSection('inquiries-section')">Inquiries</a></li>
             </ul>
             <ul class="logout">
-                <li><a href="/gl/logout.php">Log Out</a></li>
+                <li><a href="<?= ROOT ?>/login/logout">Log Out</a></li>
             </ul>
         </div>
 
@@ -711,47 +711,36 @@
                             <th>Address</th>
                             <th>Size</th>
                             <th>Crop Type</th>
-                            <th>Document</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>123</td>
-                            <td>22/3, King Street, New York</td>
-                            <td>200 Sqm</td>
-                            <td>Rice</td>
-                            <td><button class='blue-btn'>View</button></td>
-                            <td>Active</td>
-                            <td>
-                                <button class="green-btn edit-btn">Edit</button>
-                                <button class="red-btn">Deactivate</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>150</td>
-                            <td>212/5, Uyana Road, Moratuwa</td>
-                            <td>200 Sqm</td>
-                            <td>Wheat</td>
-                            <td><button class='blue-btn'>View</button></td>
-                            <td>Pending</td>
-                            <td>
-                                <button class="green-btn edit-btn">Edit</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>19</td>
-                            <td>22/3, Uyana Street, New Jersey</td>
-                            <td>200 Sqm</td>
-                            <td>Maize</td>
-                            <td><button class='blue-btn'>View</button></td>
-                            <td>Active</td>
-                            <td>
-                                <button class="green-btn edit-btn">Edit</button>
-                                <button class="red-btn">Deactivate</button>
-                            </td>
-                        </tr>
+                        <?php if (!empty($lands)): ?>
+                            <?php foreach ($lands as $land): ?>
+                                <tr data-id="<?= htmlspecialchars($land->id) ?>">
+                                    <td><?php echo htmlspecialchars($land->id); ?></td>
+                                    <td><?php echo htmlspecialchars($land->address); ?></td>
+                                    <td><?php echo htmlspecialchars($land->size); ?></td>
+                                    <td><?php echo htmlspecialchars($land->crop); ?></td>
+                                    <td>
+                                        <?= $land->status === 0 ? "Pending" : "Approved" ?>
+                                    </td>
+                                    <td>
+                                        <?php if ($land->status === 0): ?>
+                                            <button class="green-btn"
+                                                onclick="window.location.href='<?php echo ROOT; ?>/Admin/updateland/<?php echo $land->id; ?>';">Approve</button>
+                                        <?php else: ?>
+                                            <button class="blue-btn" style="color:white">View</button>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="6">No Lands Available</td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>

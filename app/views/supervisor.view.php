@@ -302,20 +302,20 @@
 				</table>
 			</div>
 			<div id="manage-site-heads-section" class="section" style="display:none;">
-				<center>
+			<center>
 					<h1>Manage Site Heads</h1>
 				</center>
 				<br><br>
 				<!-- Search and Filter Section -->
-				<!-- <div class="filter-section"> -->
-				<!-- <input type="text" id="search-bar" placeholder="Search supervisors by name or email">
-						<select id="status-filter">
-							<option value="">All Status</option>
-							<option value="active">Active</option>
-							<option value="inactive">Inactive</option>
-						</select> -->
-				<button class="green-btn" id="add-supervisor-btn">Add Site Head</button>
-				<!-- </div> -->
+				<div class="filter-section">
+					<input type="text" id="search-bar" placeholder="Search supervisors by name or email">
+					<select id="status-filter">
+						<option value="">All Status</option>
+						<option value="active">Active</option>
+						<option value="inactive">Inactive</option>
+					</select>
+					<button class="green-btn" id="add-supervisor-btn">Add Site Head</button>
+				</div>
 				<!-- Supervisors Table -->
 				<table class="dashboard-table">
 					<thead>
@@ -323,40 +323,67 @@
 							<th>Name</th>
 							<th>Email</th>
 							<th>Phone Number</th>
-							<th>Land ID</th>
 							<th>Zone</th>
 							<th>Status</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody id="supervisor-list">
-						<?php if (!empty($data)): ?>
-							<?php foreach ($data as $data): ?>
-								<tr data-id="<?= htmlspecialchars($data->id) ?>">
-									<td><?= htmlspecialchars($data->name) ?></td>
-									<td><?= htmlspecialchars($data->email) ?></td>
-									<td><?= htmlspecialchars($data->number) ?> </td>
-									<td><?= htmlspecialchars($data->landID) ?></td>
-									<td><?= htmlspecialchars($data->zone) ?></td>
-									<td>
-										<?= $data->status === 0 ? "Active" : "Inactive" ?>
-									</td>
-									<td>
-										<?php if ($data->status === 0): ?>
-											<button class="green-btn edit-sitehead-btn">Edit</button>
-										<?php else: ?>
-											<button class="green-btn edit-sitehead-btn">Edit</button>
-											<button class="red-btn"
-												onclick="window.location.href='<?php echo ROOT; ?>/Supervisor/Manage_sitehead/delete_sitehead/<?php echo $data->id; ?>';">Remove</button>
-										<?php endif; ?>
-									</td>
-								</tr>
-							<?php endforeach; ?>
-						<?php else: ?>
-							<tr>
-								<td colspan="5">No siteheads available.</td>
-							</tr>
-						<?php endif; ?>
+						<tr data-id="1">
+							<td>Yasitha Vas</td>
+							<td>yvas@gmail.com</td>
+							<td>0715559997</td>
+							<td>Zone 1</td>
+							<td>Active</td>
+							<td>
+								<button class="green-btn edit-btn" data-id="1">Edit</button>
+								<button class="red-btn">Deactivate</button>
+							</td>
+						</tr>
+						<tr data-id="2">
+							<td>Samantha Perera</td>
+							<td>samantha@gmail.com</td>
+							<td>0715551234</td>
+							<td>Zone 2</td>
+							<td>Inactive</td>
+							<td>
+								<button class="green-btn edit-btn" data-id="2">Edit</button>
+								<button class="red-btn">Activate</button>
+							</td>
+						</tr>
+						<tr data-id="3">
+							<td>Prabath Jayasinghe</td>
+							<td>prabathjaya@gmail.com</td>
+							<td>0776543210</td>
+							<td>Zone 3</td>
+							<td>Active</td>
+							<td>
+								<button class="green-btn edit-btn" data-id="3">Edit</button>
+								<button class="red-btn">Deactivate</button>
+							</td>
+						</tr>
+						<tr data-id="4">
+							<td>Anushka Fernando</td>
+							<td>anushka.fernando@gmail.com</td>
+							<td>0789004567</td>
+							<td>Zone 4</td>
+							<td>Active</td>
+							<td>
+								<button class="green-btn edit-btn" data-id="4">Edit</button>
+								<button class="red-btn">Deactivate</button>
+							</td>
+						</tr>
+						<tr data-id="5">
+							<td>Kamini Mapa</td>
+							<td>kamini.mapa@gmail.com</td>
+							<td>0712233445</td>
+							<td>Zone 5</td>
+							<td>Inactive</td>
+							<td>
+								<button class="green-btn edit-btn" data-id="5">Edit</button>
+								<button class="red-btn">Activate</button>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 				<!-- Add New Supervisor Button -->
@@ -475,7 +502,7 @@
 							<td>Inactive</td>
 							<td>
 								<button class="green-btn edit-btn" data-id="2">Edit</button>
-								<button class="red-btn">Deactivate</button>
+								<button class="red-btn">Activate</button>
 							</td>
 						</tr>
 						<tr data-id="3">
@@ -508,7 +535,7 @@
 							<td>Inactive</td>
 							<td>
 								<button class="green-btn edit-btn" data-id="5">Edit</button>
-								<button class="red-btn">Deactivate</button>
+								<button class="red-btn">Activate</button>
 							</td>
 						</tr>
 					</tbody>

@@ -23,7 +23,12 @@ class Landowner extends Controller
             exit();
         }
 
-        $lands = $this->manageland->findAll();
+        $user_id = $_SESSION['id'];
+        // $data = [
+        //     'landowner_id' => $user_id,
+        // ];
+        $lands = $this->manageland->findSpecificLand($user_id);
+
 
         $this->view('landowner', ['lands' => $lands]);
     }
@@ -62,6 +67,7 @@ class Landowner extends Controller
             }
 
             $formData = [
+                'landowner_id' => $_SESSION['id'] ?? '',
                 'address' => $_POST['address'] ?? '',
                 'size' => $_POST['size'] ?? '',
                 'duration' => $_POST['duration'] ?? '',

@@ -19,7 +19,7 @@
         } elseif ($_SESSION['role_id'] == 2) {
           echo '<a href="' . ROOT . '/supervisor">Dashboard</a>';
         } elseif ($_SESSION['role_id'] == 3) {
-          echo '<a href="' . ROOT . '/worker">Dashboard</a>';
+          echo '<a href="' . ROOT . '/sitehead">Dashboard</a>';
         } elseif ($_SESSION['role_id'] == 4) {
           echo '<a href="' . ROOT . '/landowner">Dashboard</a>';
         } elseif ($_SESSION['role_id'] == 5) {

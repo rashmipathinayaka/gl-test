@@ -15,6 +15,7 @@ class Land
 	protected $allowedColumns = [
 
 		'id',
+		'landowner_id',
 		'address',
 		'size',
 		'duration',
